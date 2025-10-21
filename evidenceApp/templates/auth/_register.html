@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Evidence App | Login</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link rel="stylesheet" href="{% static 'bootstrap-icons-1.13.1/bootstrap-icons.min.css' %}" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+    <style>
+        select:invalid {
+            color: #6c757d; /* color gris como placeholder */
+        }
+
+        option {
+            color: #000; /* color normal */
+        }
+    </style>
+
+    <script>
+        function verificarCorreo(input) {
+        const mensaje = document.getElementById("mensajeEmail");
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (regex.test(input.value)) {
+            input.classList.remove("is-invalid");
+            input.classList.add("is-valid");
+            mensaje.textContent = "";
+        } else {
+            input.classList.remove("is-valid");
+            input.classList.add("is-invalid");
+            mensaje.textContent = "Correo no válido. Ejemplo: usuario@dominio.com";
+        }
+        }
+    </script>
+
+</head>
+
+<body class="register-page bg-body-secondary">
+    <div class="register-box col-4 mx-auto p-4">
+        <div class="register-logo text-center">
+            <img src="{% static 'img/evidence.jpg' %}" width="60">
+            <h4>Indicios App</h4>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="register-box-msg">Registro de Nuevo Usuario</p>
+                <form action="" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-person"></span></div>
+                        <input type="text" class="form-control" placeholder="Nombre Completo" oninput="this.value = this.value.toUpperCase()"/>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-buildings"></span></div>
+                        <select class="form-select" id="Dependencia" required>
+                            <option value="" selected disabled hidden>Dependencia</option>
+                            <option value="1">AGENTE MINISTERIAL DE INVESTIGACION CRIMINAL</option>
+                            <option value="2">POLICIA ESTATAL DE SEGURIDAD PUBLICA</option>
+                            <option value="3">AGENTE DE SEGURIDAD PUBLICA MUNICIPAL</option>
+                            <option value="4">POLICIA ESTATAL PENITENCIARIO</option>
+                            <option value="5">FISCALIA GENERAL DE LA REPUBLICA</option>
+                            <option value="6">AGENTE DEL MINISTERIO PUBLICO</option>
+                            <option value="7">SECRETARIO DE ACUERDOS</option>
+                            <option value="8">AGENTE AUXILIAR DEL MINISTERIO PUBLICO</option>
+                            <option value="9">SPM</option>
+                        </select>
+                        <!--<input type="text" class="form-control" placeholder="Dependencia" />-->
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-telephone"></span></div>
+                        <input type="text" class="form-control" placeholder="Teléfono" maxlength="12" 
+                                oninput="this.value = this.value
+                                    .replace(/[^0-9]/g, '')
+                                    .replace(/(\d{3})(\d{3})(\d{0,4})/, '$1 $2 $3')
+                                    .replace(/-$/, '')"/>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-envelope"></span></div>
+                        <input type="email" class="form-control" id="email" placeholder="Email" required oninput="verificarCorreo(this)"/>
+                        <!--<small id="mensajeEmail" class="text-danger"></small>-->
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-lock"></span></div>
+                        <input type="password" class="form-control" placeholder="Contraseña" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text"><span class="bi bi-lock"></span></div>
+                        <input type="password" class="form-control" placeholder="Confirmar Contraseña" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Acepto los <a href="#">términos</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <hr>
+                <p class="mb-0">
+                    <a href="{% url 'login' %}" class="text-center"> Ya tengo una cuenta </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

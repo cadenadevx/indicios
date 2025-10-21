@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.db import IntegrityError
+
 # Create your views here.
 
 def index(request):
@@ -12,7 +17,9 @@ def login(request):
     return render(request, 'auth/login.html')
 
 def register(request):
-    return render(request, 'auth/register.html')
+    return render(request, 'auth/register.html', {
+        'form': UserCreationForm
+    })
 
 def close(request):
     return render(request, 'auth/close.html')
