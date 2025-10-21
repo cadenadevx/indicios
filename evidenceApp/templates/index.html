@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <div class="p-3">
+                <img src="{% static 'img/evidence.jpg' %}" width="120">
+            </div>
+            <h2 class="text-body-emphasis">Registro de Cadenas de Custodia</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-muted">
+                Formatos de Cadena de Custotia.
+            </p>
+            <div class="d-inline-flex gap-2 mb-5">
+                <button class="btn btn-outline-secondary btn-lg px-5 rounded-pill" type="button">
+                    Login
+                </button>
+                <button class="btn btn-outline-secondary btn-lg px-5 rounded-pill" type="button">
+                    Registro
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
